@@ -77,6 +77,3 @@ gate = SmartGate(
     port=8000,
 )
 
-
-# ── Step 4: Start ─────────────────────────────────────────────
-gate.start()
