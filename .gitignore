@@ -1,0 +1,11 @@
+.env
+.idea/
+dist/
+flower_db.json
+sg_bans.json
+sg_hashes.json
+sg_index.json
+*.egg-info/
+__pycache__/
+*.pyc
+test_main.http
