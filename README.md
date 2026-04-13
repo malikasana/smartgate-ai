@@ -3,9 +3,11 @@
 
 > *"Don't authenticate the user. Authenticate the data."*
 
-[![Version](https://img.shields.io/badge/version-0.1.0-green)](https://pypi.org/project/smartgate)
+[![Version](https://img.shields.io/badge/version-0.1.0-green)](https://pypi.org/project/smartgate-ai)
 [![Python](https://img.shields.io/badge/python-3.10+-blue)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-orange)](LICENSE)
+[![PyPI](https://img.shields.io/badge/PyPI-smartgate--ai-blue)](https://pypi.org/project/smartgate-ai)
+[![GitHub](https://img.shields.io/badge/GitHub-smartgate--ai-black)](https://github.com/malikasana/smartgate-ai)
 
 ---
 
@@ -165,7 +167,7 @@ SmartGate maintains a lightweight index of approved entries. On every request, t
 ## Installation
 
 ```bash
-pip install smartgate
+pip install smartgate-ai
 ```
 
 ---
@@ -222,10 +224,13 @@ gate = SmartGate(
     port                   = 8000,
 )
 
+# For local development:
 gate.start()
-```
 
-That's it. SmartGate is running.
+# For cloud deployment (Railway, Render, etc.)
+# Remove gate.start() and use a Procfile instead:
+# web: uvicorn your_file:gate.app --host 0.0.0.0 --port $PORT
+```
 
 ---
 
@@ -343,6 +348,7 @@ smartgate/
 ├── examples/
 │   └── flower_example.py       ← Working example to copy and modify
 ├── README.md
+├── USAGE.md
 ├── pyproject.toml
 └── .env.example
 ```
@@ -414,6 +420,26 @@ SmartGate calls `save(data)` when data passes all layers. That's the only contra
 
 ---
 
+## Deployment
+
+### Local Development
+```bash
+pip install smartgate-ai
+python your_app.py
+# API runs on http://localhost:8000
+```
+
+### Cloud Deployment (Railway, Render, etc.)
+1. Remove `gate.start()` from your app file
+2. Create a `Procfile` in your project root:
+```
+web: uvicorn your_app:gate.app --host 0.0.0.0 --port $PORT
+```
+3. Add your AI API key as an environment variable on the platform
+4. Push to GitHub — platform deploys automatically
+
+---
+
 ## Scaling Path
 
 ```
@@ -446,6 +472,14 @@ The result is a system that is:
 - **Smarter** — rejects bad data that authenticated users could still submit
 - **Fairer** — anyone can contribute if their data is genuine
 - **Cheaper** — no user management, no session storage, no token refresh
+
+---
+
+## Links
+
+- PyPI: https://pypi.org/project/smartgate-ai
+- GitHub: https://github.com/malikasana/smartgate-ai
+- Issues: https://github.com/malikasana/smartgate-ai/issues
 
 ---
 
